@@ -48,6 +48,25 @@ namespace ProspectManager.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,Email,BirthDate")] Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(contact);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
