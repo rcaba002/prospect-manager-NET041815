@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProspectManager.Mvc.Models.TodoItems
@@ -11,6 +12,7 @@ namespace ProspectManager.Mvc.Models.TodoItems
         [Required]
         public string Description { get; set; }
 
+        [DisplayName("Due Date")]
         public DateTime? DueDate { get; set; }
 
         public bool Completed { get; set; }
