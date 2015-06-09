@@ -13,6 +13,8 @@ namespace ProspectManager.Mvc.Models.TodoItems
         public string Description { get; set; }
 
         [DisplayName("Due Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",
+            ApplyFormatInEditMode = true)]
         public DateTime? DueDate { get; set; }
 
         public bool Completed { get; set; }

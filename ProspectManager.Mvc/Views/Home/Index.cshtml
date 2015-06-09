@@ -17,15 +17,15 @@
 
         <table>
             <tr>
-                <th>Due date</th>
+                <th>Due Date</th>
                 <th>Description</th>
             </tr>
 
             @foreach (var item in Model.UpcomingTodos)
             {
                 <tr>
-                    <td>@item.DueDate</td>
-                    <td>@item.Description</td>
+                    <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
                 </tr>
             }
         </table>
