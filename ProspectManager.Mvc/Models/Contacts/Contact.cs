@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProspectManager.Mvc.Models.Contacts
@@ -15,6 +16,7 @@ namespace ProspectManager.Mvc.Models.Contacts
         [EmailAddress]
         public string Email { get; set; }
 
+        [DisplayName("Birthdate")]
         public DateTime BirthDate { get; set; }
     }
 }

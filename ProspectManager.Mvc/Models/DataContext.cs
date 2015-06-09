@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel;
+using System.Data.Entity;
 using ProspectManager.Mvc.Models.Contacts;
 using ProspectManager.Mvc.Models.Meetings;
 using ProspectManager.Mvc.Models.TodoItems;
@@ -12,6 +13,7 @@ namespace ProspectManager.Mvc.Models
             Database.SetInitializer<DataContext>(new SeededDatabaseInitializer());
         }
 
+        [DisplayName("To Do Items")]
         public DbSet<TodoItem> TodoItems { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
