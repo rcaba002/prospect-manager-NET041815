@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using ProspectManager.Mvc.Models;
 using ProspectManager.Mvc.Models.Contacts;
+using System.Net;
 
 namespace ProspectManager.Mvc.Controllers
 {
@@ -65,6 +66,30 @@ namespace ProspectManager.Mvc.Controllers
             }
 
             return View(contact);
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contact);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Contact contact = db.Contacts.Find(id);
+            db.Contacts.Remove(contact);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
