@@ -1,0 +1,55 @@
+﻿@model ProspectManager.Mvc.Models.Home.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+
+<div class="row">
+    @foreach (var item in @Model.Alphabet)
+    {
+        @Html.ActionLink(item.ToString(), "FilteredBy", "Contacts", new { id = item }, null)
+    }
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Upcoming todos</h3>
+
+        <table>
+            <tr>
+                <th>Due date</th>
+                <th>Description</th>
+            </tr>
+
+            @foreach (var item in Model.UpcomingTodos)
+            {
+                <tr>
+                    <td>@item.DueDate</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-sm-6">
+        <h3>Upcoming Meetings</h3>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Location</th>
+            </tr>
+
+            @foreach (var item in Model.UpcomingMeetings)
+            {
+                <tr>
+                    <td>@item.MeetingDate</td>
+                    <td>@item.Title</td>
+                    <td>@item.Location.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
