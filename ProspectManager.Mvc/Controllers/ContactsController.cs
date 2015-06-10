@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using ProspectManager.Mvc.Models;
 using ProspectManager.Mvc.Models.Contacts;
 using System.Net;
+using System.Data.Entity.Infrastructure;
 
 namespace ProspectManager.Mvc.Controllers
 {
@@ -39,20 +40,21 @@ namespace ProspectManager.Mvc.Controllers
                 ModelState.AddModelError(string.Empty, "There were some errors");
                 return View(contact);
             }
+
+            Contact retreivedContact = db.Contacts.Find(contact.Id);
+            retreivedContact.Name = contact.Name;
+            retreivedContact.BirthDate = contact.BirthDate;
+            retreivedContact.Email = contact.Email;
+
             try
             {
-                Contact retreivedContact = db.Contacts.Find(contact.Id);
-                retreivedContact.Name = contact.Name;
-                retreivedContact.BirthDate = contact.BirthDate;
-                retreivedContact.Email = contact.Email;
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (DbUpdateException)
             {
-                ModelState.AddModelError(string.Empty, "No Dupes Allowed");
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Email", "No Dupes Allowed");
+                return View(contact);
             }
         }
 

@@ -5,14 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProspectManager.Mvc.Models.Contacts
 {
-    public class Contact : Attribute
+    public class Contact
     {
         public int Id { get; set; }
 
         [MaxLength(150)]
         [Required]
         public string Name { get; set; }
-        [Index("IX_Email",IsUnique = true)]
+
+        [Index(IsUnique = true)]
         [MaxLength(250)]
         [EmailAddress]
         public string Email { get; set; }
@@ -21,10 +22,5 @@ namespace ProspectManager.Mvc.Models.Contacts
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", 
             ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
-
-        public static void Dupes(string dupe)
-        {
-            
-        }
     }
 }
