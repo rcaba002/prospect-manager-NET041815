@@ -15,7 +15,9 @@ namespace ProspectManager.Mvc.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            return View(db.Contacts.ToList());
+            return View(db.Contacts
+                .OrderBy(x => x.Name)
+                .ToList());
         }
 
         public ActionResult FilteredBy(string id)
