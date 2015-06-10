@@ -16,3 +16,18 @@ textarea {
     max-width: 280px;
 }
 
+.prettyLetters {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.prettyLetters a {
+    padding-right: 8px;
+}
+
+.prettyLetters a:hover {
+    font-size: medium;
+    font-weight: bold;
+
+}
+
