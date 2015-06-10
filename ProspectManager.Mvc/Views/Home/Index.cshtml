@@ -1,4 +1,5 @@
 ﻿@model ProspectManager.Mvc.Models.Home.IndexViewModel
+@using ProspectManager.Mvc.Extensions
 @{
     ViewBag.Title = "Index";
 }
@@ -6,10 +7,7 @@
 <h2>Home</h2>
 
 <div class="row">
-    @foreach (var item in @Model.Alphabet)
-    {
-        @Html.ActionLink(item.ToString(), "FilteredBy", "Contacts", new { id = item }, null)
-    }
+    @Html.ContactAlphabetList()
 </div>
 <div class="row">
     <div class="col-sm-6">

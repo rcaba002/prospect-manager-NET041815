@@ -25,9 +25,7 @@ namespace ProspectManager.Mvc.Controllers
                         x.MeetingDate < threeDaysFromNow)
                     .OrderBy(x => x.MeetingDate)
                     .Take(1000)
-                    .ToList(),
-                Alphabet = Enumerable.Range('A', 26)
-                    .Select(x => (char)x).ToList()
+                    .ToList()
             };
 
             return View(model);

@@ -113,6 +113,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\TodoItemsController.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Models\Contacts\Contact.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

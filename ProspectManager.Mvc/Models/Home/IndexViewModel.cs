@@ -12,7 +12,5 @@ namespace ProspectManager.Mvc.Models.Home
 
         [DisplayName("Upcoming Meetings")]
         public List<Meeting> UpcomingMeetings { get; set; }
-
-        public List<char> Alphabet { get; set; }
     }
 }
