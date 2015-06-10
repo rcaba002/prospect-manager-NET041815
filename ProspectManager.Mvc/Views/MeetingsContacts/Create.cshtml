@@ -1,0 +1,22 @@
+﻿@model ProspectManager.Mvc.Models.Meetings.Meeting
+@using ProspectManager.Mvc.Models.Contacts
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add contact to meeting @Model.Title</h2>
+
+@using(Html.BeginForm())
+{
+    foreach (Contact contact in ViewBag.ContactList)
+    {
+        <label for="contactIdList-@contact.Id">
+            <input type="checkbox"
+                   id="contactIdList-@contact.Id"
+                   name="contactIdList"
+                   value="@contact.Id" />
+            @contact.Name
+        </label>
+    }
+    <input type="submit" />
+}

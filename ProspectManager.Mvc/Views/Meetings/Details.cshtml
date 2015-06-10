@@ -43,6 +43,7 @@
             <li>@contact.Name</li>
         }        
     </ul>
+    @Html.ActionLink("Add contact", "Create", "MeetingsContacts", new { id = Model.Id }, null)
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
