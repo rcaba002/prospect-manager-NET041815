@@ -101,6 +101,20 @@ namespace ProspectManager.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contact);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
