@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Web.Mvc;
 using ProspectManager.Mvc.Models;
 using ProspectManager.Mvc.Models.Contacts;
 using System.Net;
+using System.Data.Entity.Infrastructure;
 
 namespace ProspectManager.Mvc.Controllers
 {
@@ -44,9 +46,16 @@ namespace ProspectManager.Mvc.Controllers
             retreivedContact.BirthDate = contact.BirthDate;
             retreivedContact.Email = contact.Email;
 
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            try
+            {
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("Email", "No Dupes Allowed");
+                return View(contact);
+            }
         }
 
         public ActionResult Create()

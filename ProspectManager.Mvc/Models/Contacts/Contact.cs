@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProspectManager.Mvc.Models.Contacts
 {
@@ -12,6 +13,7 @@ namespace ProspectManager.Mvc.Models.Contacts
         [Required]
         public string Name { get; set; }
 
+        [Index(IsUnique = true)]
         [MaxLength(250)]
         [EmailAddress]
         public string Email { get; set; }
